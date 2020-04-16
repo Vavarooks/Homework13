@@ -6,31 +6,33 @@ class Employee extends React.Component {
         employeedata: []
     }
     componentDidMount = () => {
-        axios.get("https://randomuser.me/api/?results=25&nat=us").then((Response) => {
+        axios.get("https://randomuser.me/api/?results=200&nat=us").then((Response) => {
             console.log("Respose", Response.data.results)
+            var apidata = Response.data.results
             let employeearray = []
-            for (let i = 0; i > Response.data.results.length; i++) {
+            for (let i = 0; i < apidata.length; i++) {
                 let record = {
-                    firstName: Response.data.results[i].name.first,
-                    lastName: Response.data.results[i].name.last,
-                    phonenum: Response.data.results[i].cell,
-                    id: Response.data.results[i].id.value,
-                    email: Response.data.results[i].email,
+                    firstName: apidata[i].name.first,
+                    lastName: apidata[i].name.last,
+                    phonenum:apidata[i].cell,
+                    id: apidata[i].id.value,
+                    email: apidata[i].email,
                 }
-                console.log("For Loop")
+                
                 employeearray.push(record)
             }
-            console.log(employeearray)
+            
             this.setState({ employeedata: employeearray })
+            console.log(this.state.employeedata)
         })
     }
     render() {
         return (<div>
-            <h1>
-                <heading>Employee Profiles</heading>
-                <EmployeeRecords Records={this.state.employeedata} />
-            </h1>
-        </div>)
+            <div className="jumbotron bg-info">
+            <h1>Employee Profiles</h1>
+            </div>
+                <EmployeeRecords employeerecords={this.state.employeedata}/>
+                    </div>)
     }
 }
 export default Employee

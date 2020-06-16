@@ -5,6 +5,7 @@ This is a Employee Records Tracker
 - uses react
 - uses mongodb
 - uses node.js
+- uses Heroku
 
 ## also contains
 

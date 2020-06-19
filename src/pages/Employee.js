@@ -29,7 +29,8 @@ class Employee extends React.Component {
     render() {
         return (<div>
             <div className="jumbotron bg-info">
-            <h1>Employee Profiles</h1>
+            <h1>Employee Profile</h1>
+            <h4>Using Axios and randomuser API</h4>
             </div>
                 <EmployeeRecords employeerecords={this.state.employeedata}/>
                     </div>)
